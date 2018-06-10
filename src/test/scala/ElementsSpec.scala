@@ -54,7 +54,7 @@ class BoardSpec extends FunSpec {
     assert(Board.initialBoard == board)
   }
 
-  describe ("changeCell") {
+  it ("changeCell") {
     val board = Board.initialBoard.changeCell(Cell(Option(Black)), (3, 2))
     assert(board(3, 2) == Cell(Option(Black)))
   }
