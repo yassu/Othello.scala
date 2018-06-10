@@ -13,3 +13,20 @@ class ColorSpec extends FunSpec {
   }
 }
 
+class CellSpec extends FunSpec {
+  it("Cell instance whose color is black should be initialized.") {
+    Cell(Option(Black))
+  }
+
+  describe("colorChar") {
+    it ("Cell(Black).colorChar") {
+      Cell(Option(Black)).colorChar == 'B'
+    }
+    it ("Cell(White).colorChar") {
+      Cell(Option(White)).colorChar == 'W'
+    }
+    it ("Cell(None).colorChar") {
+      Cell(None).colorChar == '.'
+    }
+  }
+}
