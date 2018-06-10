@@ -15,7 +15,7 @@ case class Cell(color: Option[Color]) {
 
 case class Board (cells: List[List[Cell]]) {
   def apply(x: Int, y: Int): Cell = cells(y)(x)
-  def changeColor(cell: Cell, pos: (Int, Int)): Board = Board (
+  def changeCell(cell: Cell, pos: (Int, Int)): Board = Board (
     (
       for (y <- (0 until Board.SIZE)) yield (
         (
