@@ -30,3 +30,27 @@ class CellSpec extends FunSpec {
     }
   }
 }
+
+class BoardSpec extends FunSpec {
+  it("initialBoard") {
+    var board = Board(List(
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(Some(White)),
+        Cell(Some(Black)), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(Some(Black)),
+        Cell(Some(White)), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+      List(Cell(None), Cell(None), Cell(None), Cell(None),
+        Cell(None), Cell(None), Cell(None), Cell(None)),
+    ))
+    assert(Board.initialBoard == board)
+  }
+}
