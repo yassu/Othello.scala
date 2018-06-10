@@ -33,7 +33,7 @@ class CellSpec extends FunSpec {
 
 class BoardSpec extends FunSpec {
   it("initialBoard") {
-    var board = Board(List(
+    val board = Board(List(
       List(Cell(None), Cell(None), Cell(None), Cell(None),
         Cell(None), Cell(None), Cell(None), Cell(None)),
       List(Cell(None), Cell(None), Cell(None), Cell(None),
@@ -52,5 +52,10 @@ class BoardSpec extends FunSpec {
         Cell(None), Cell(None), Cell(None), Cell(None)),
     ))
     assert(Board.initialBoard == board)
+  }
+
+  describe ("changeColor") {
+    val board = Board.initialBoard.changeColor(Cell(Option(Black)), (3, 2))
+    assert(board(3, 2) == Cell(Option(Black)))
   }
 }

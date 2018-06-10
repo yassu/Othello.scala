@@ -13,7 +13,19 @@ case class Cell(color: Option[Color]) {
   }
 }
 
-case class Board (cells: List[List[Cell]])
+case class Board (cells: List[List[Cell]]) {
+  def apply(x: Int, y: Int): Cell = cells(y)(x)
+  def changeColor(cell: Cell, pos: (Int, Int)): Board = Board (
+    (
+      for (y <- (0 until Board.SIZE)) yield (
+        (
+          for (x <- (0 until Board.SIZE))
+            yield if(x == pos._1 && y == pos._2) cell else cells(y)(x)
+        ).toList
+      )
+    ).toList
+  )
+}
 
 object Board {
   val SIZE = 8
