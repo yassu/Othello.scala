@@ -25,6 +25,10 @@ case class Board (cells: List[List[Cell]]) {
       )
     ).toList
   )
+
+  private[othello] def ensurePosition(x: Int, y: Int): Boolean =
+    x >= 0 && x < Board.SIZE &&
+    y >= 0 && y < Board.SIZE
 }
 
 object Board {
