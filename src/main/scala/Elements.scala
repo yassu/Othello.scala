@@ -48,7 +48,7 @@ case class Board (cells: List[List[Cell]]) {
       takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
-    else if (! this.ensurePosition(pos._1, rowCols.last + 1)) Set()
+    else if (! Board.ensurePosition(pos._1, rowCols.last + 1)) Set()
     else if (this(pos._1, rowCols.last + 1) == cell) rowCols.map(h => (pos._1, h)).toSet
     else Set()
   }
@@ -58,14 +58,11 @@ case class Board (cells: List[List[Cell]]) {
       takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
-    else if (! this.ensurePosition(pos._1, rowCols.last - 1)) Set()
+    else if (! Board.ensurePosition(pos._1, rowCols.last - 1)) Set()
     else if (this(pos._1, rowCols.last - 1) == cell) rowCols.map(h => (pos._1, h)).toSet
     else Set()
   }
 
-  private[othello] def ensurePosition(x: Int, y: Int): Boolean =
-    x >= 0 && x < Board.SIZE &&
-    y >= 0 && y < Board.SIZE
 }
 
 object Board {
@@ -85,4 +82,8 @@ object Board {
       )
     ).toList
   )
+
+  private[othello] def ensurePosition(x: Int, y: Int): Boolean =
+    x >= 0 && x < Board.SIZE &&
+    y >= 0 && y < Board.SIZE
 }

@@ -95,41 +95,39 @@ class BoardSpec extends FunSpec {
   }
 
   describe ("ensurePosition") {
-    val board = Board.initialBoard
-    it ("(n, m) direction") {
-      assert(board.ensurePosition(3, 3))
+      assert(Board.ensurePosition(3, 3))
     }
 
     it ("(n, m) direction2") {
-      assert(board.ensurePosition(0, 0))
+      assert(Board.ensurePosition(0, 0))
     }
 
     it ("(-n, m) direction2") {
-      assert(! board.ensurePosition(-1, 0))
+      assert(! Board.ensurePosition(-1, 0))
     }
 
     it ("(n, -m) direction2") {
-      assert(! board.ensurePosition(0, -1))
+      assert(! Board.ensurePosition(0, -1))
     }
 
     it ("(n, m) direction3") {
-      assert(board.ensurePosition(7, 0))
+      assert(Board.ensurePosition(7, 0))
     }
 
     it ("(high, m) direction3") {
-      assert(! board.ensurePosition(8, 0))
+      assert(! Board.ensurePosition(8, 0))
     }
 
     it ("(n, m) direction4") {
-      assert(board.ensurePosition(0, 7))
+      assert(Board.ensurePosition(0, 7))
     }
 
     it ("(n, high) direction4") {
-      assert(! board.ensurePosition(0, 8))
+      assert(! Board.ensurePosition(0, 8))
     }
 
     it ("(n, m) direction5") {
-      assert(board.ensurePosition(7, 7))
+      assert(Board.ensurePosition(7, 7))
     }
   }
 
