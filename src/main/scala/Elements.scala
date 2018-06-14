@@ -11,6 +11,12 @@ case class Cell(color: Option[Color]) {
     case None => false
   }
 
+  def otherCell: Cell = color match {
+    case Some(White) => Cell(Some(Black))
+    case Some(Black) => Cell(Some(White))
+    case None => Cell(None)
+  }
+
   def colorChar: Char = color match {
     case Some(Black) => 'B'
     case Some(White) => 'W'
@@ -33,7 +39,7 @@ case class Board (cells: List[List[Cell]]) {
 
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): List[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
-      takeWhile(t => this(pos._1, t).isDefined && this(pos._1, t) != cell)
+      takeWhile(t => this(pos._1, t).otherCell == cell)
     if (rowCols.isEmpty) List()
     else if (this(pos._1, pos._2).isDefined) List()
     else if (! Board.validateCellPosition((pos._1, rowCols.last + 1))) List()

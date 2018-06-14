@@ -32,6 +32,20 @@ class CellSpec extends FunSpec {
     }
   }
 
+  describe ("otherCell") {
+    it ("Other cell is Black color cell") {
+      assert(Cell(Some(White)).otherCell == Cell(Some(Black)))
+    }
+
+    it ("Black cell is White color cell") {
+      assert(Cell(Some(Black)).otherCell == Cell(Some(White)))
+    }
+
+    it ("None cell is White color cell") {
+      assert(Cell(None).otherCell == Cell(None))
+    }
+  }
+
   describe("colorChar") {
     it ("Cell(Black).colorChar") {
       Cell(Option(Black)).colorChar == 'B'
