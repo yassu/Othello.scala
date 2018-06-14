@@ -6,7 +6,7 @@ case object Black extends Color()
 case object White extends Color()
 
 case class Cell(color: Option[Color]) {
-  def defined: Boolean = color match {
+  def isDefined: Boolean = color match {
     case Some(e) => true
     case None => false
   }
@@ -33,9 +33,9 @@ case class Board (cells: List[List[Cell]]) {
 
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): List[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
-      takeWhile(t => this(pos._1, t).defined && this(pos._1, t) != cell)
+      takeWhile(t => this(pos._1, t).isDefined && this(pos._1, t) != cell)
     if (rowCols.isEmpty) List()
-    else if (this(pos._1, pos._2).defined) List()
+    else if (this(pos._1, pos._2).isDefined) List()
     else if (! Board.validateCellPosition((pos._1, rowCols.last + 1))) List()
     else if (this(pos._1, rowCols.last + 1) == cell) rowCols.map(h => (pos._1, h)).toList
     else List()
