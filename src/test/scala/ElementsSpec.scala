@@ -18,6 +18,20 @@ class CellSpec extends FunSpec {
     Cell(Option(Black))
   }
 
+  describe ("isDefined") {
+    it ("Black Cell is defined") {
+      assert(Cell(Some(Black)).isDefined)
+    }
+
+    it ("White Cell is defined.") {
+      assert(Cell(Some(White)).isDefined)
+    }
+
+    it ("None Cell is not defined.") {
+      assert(! Cell(None).isDefined)
+    }
+  }
+
   describe("colorChar") {
     it ("Cell(Black).colorChar") {
       Cell(Option(Black)).colorChar == 'B'
