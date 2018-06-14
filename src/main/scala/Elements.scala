@@ -24,6 +24,12 @@ case class Cell(color: Option[Color]) {
   }
 }
 
+object Cell {
+  val BlackCell = Cell(Some(Black))
+  val WhiteCell = Cell(Some(White))
+  val NoneCell = Cell(None)
+}
+
 case class Board (cells: List[List[Cell]]) {
   def apply(x: Int, y: Int): Cell = cells(y)(x)
   def changeCell(cell: Cell, pos: (Int, Int)): Board = Board (

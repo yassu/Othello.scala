@@ -57,6 +57,18 @@ class CellSpec extends FunSpec {
       Cell(None).colorChar == '.'
     }
   }
+
+  it ("Cell.BlackCell can be initialized") {
+    Cell.BlackCell
+  }
+
+  it ("Cell.WhiteCell can be initialized") {
+    Cell.WhiteCell
+  }
+
+  it ("Cell.NoneCell can be initialized") {
+    Cell.NoneCell
+  }
 }
 
 class BoardSpec extends FunSpec {
