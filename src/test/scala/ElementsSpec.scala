@@ -94,44 +94,6 @@ class BoardSpec extends FunSpec {
     assert(Board.initialBoard == board)
   }
 
-  describe ("validateCellPosition") {
-    it ("(center, center) is correct") {
-      assert(Board.validateCellPosition((4, 4)))
-    }
-
-    it ("(x, 0) is correct") {
-      assert(Board.validateCellPosition(4, 0))
-    }
-
-    it ("(x, -1) is not correct)") {
-      assert(! Board.validateCellPosition(0, -1))
-    }
-
-    it ("(4, 7) is correct") {
-      assert(Board.validateCellPosition(4, 7))
-    }
-
-    it ("(x, 8) is not correct") {
-      assert(! Board.validateCellPosition(0, 8))
-    }
-
-    it ("(0, 4) is correct") {
-      assert(Board.validateCellPosition(0, 4))
-    }
-
-    it ("(-1, y) is not correct") {
-      assert(! Board.validateCellPosition((-1, 0)))
-    }
-
-    it ("(7, 4) is correct") {
-      assert(Board.validateCellPosition(7, 4))
-    }
-
-    it ("(8, y) is not correct") {
-      assert(! Board.validateCellPosition(8, 0))
-    }
-  }
-
   describe ("ensurePosition") {
     val board = Board.initialBoard
     it ("(n, m) direction") {

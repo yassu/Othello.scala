@@ -48,7 +48,7 @@ case class Board (cells: List[List[Cell]]) {
       takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
-    else if (! Board.validateCellPosition((pos._1, rowCols.last + 1))) Set()
+    else if (! this.ensurePosition(pos._1, rowCols.last + 1)) Set()
     else if (this(pos._1, rowCols.last + 1) == cell) rowCols.map(h => (pos._1, h)).toSet
     else Set()
   }
@@ -58,7 +58,7 @@ case class Board (cells: List[List[Cell]]) {
       takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
-    else if (! Board.validateCellPosition((pos._1, rowCols.last - 1))) Set()
+    else if (! this.ensurePosition(pos._1, rowCols.last - 1)) Set()
     else if (this(pos._1, rowCols.last - 1) == cell) rowCols.map(h => (pos._1, h)).toSet
     else Set()
   }
@@ -85,8 +85,4 @@ object Board {
       )
     ).toList
   )
-
-  def validateCellPosition(pos: (Int, Int)): Boolean =
-    0 <= pos._1 && pos._1 < Board.SIZE &&
-    0 <= pos._2 && pos._2 < Board.SIZE
 }
