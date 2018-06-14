@@ -93,6 +93,32 @@ class BoardSpec extends FunSpec {
     }
   }
 
+  describe ("changedCellPositionsByVertical1") {
+    it ("initBoard") {
+      val board = Board.initialBoard
+      assert(board.changedCellPositionsByVertical1((3, 2), Cell(Some(Black))) == List((3, 3)))
+    }
+
+    it ("initBoard2") {
+      val board = Board.initialBoard
+      assert(board.changedCellPositionsByVertical1((3, 2), Cell(Some(White))) == List())
+    }
+
+    it ("initBoard3") {
+      val board = Board.initialBoard.changeCell(Cell(Some(White)), (0, 7))
+      assert(board.changedCellPositionsByVertical1((0, 6), Cell(Some(Black))) == List())
+    }
+
+    it ("initBoard4") {
+      val board = Board.initialBoard.
+        changeCell(Cell(Some(Black)), (0, 7)).
+        changeCell(Cell(Some(White)), (0, 6)).
+        changeCell(Cell(Some(White)), (0, 5))
+      assert(board.changedCellPositionsByVertical1((0, 4), Cell(Some(Black))) == List((0, 5), (0, 6))
+      )
+    }
+  }
+
   it ("changeCell") {
     val board = Board.initialBoard.changeCell(Cell(Option(Black)), (3, 2))
     assert(board(3, 2) == Cell(Option(Black)))
