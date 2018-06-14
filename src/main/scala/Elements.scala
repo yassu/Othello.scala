@@ -45,7 +45,7 @@ case class Board (cells: List[List[Cell]]) {
 
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
-      takeWhile(t => this(pos._1, t).otherCell == cell)
+      takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
     else if (! Board.validateCellPosition((pos._1, rowCols.last + 1))) Set()
@@ -55,7 +55,7 @@ case class Board (cells: List[List[Cell]]) {
 
   private[othello] def changedCellPositionsByVertical2(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (0 until pos._2).reverse.
-      takeWhile(t => this(pos._1, t).otherCell == cell)
+      takeWhile(this(pos._1, _).otherCell == cell)
     if (rowCols.isEmpty) Set()
     else if (this(pos._1, pos._2).isDefined) Set()
     else if (! Board.validateCellPosition((pos._1, rowCols.last - 1))) Set()
