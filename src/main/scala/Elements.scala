@@ -53,6 +53,16 @@ case class Board (cells: List[List[Cell]]) {
     else List()
   }
 
+  private[othello] def changedCellPositionsByVertical2(pos: (Int, Int), cell: Cell): List[(Int, Int)] = {
+    val rowCols = (0 until pos._2).reverse.
+      takeWhile(t => this(pos._1, t).otherCell == cell)
+    if (rowCols.isEmpty) List()
+    else if (this(pos._1, pos._2).isDefined) List()
+    else if (! Board.validateCellPosition((pos._1, rowCols.last - 1))) List()
+    else if (this(pos._1, rowCols.last - 1) == cell) rowCols.map(h => (pos._1, h)).toList
+    else List()
+  }
+
   private[othello] def ensurePosition(x: Int, y: Int): Boolean =
     x >= 0 && x < Board.SIZE &&
     y >= 0 && y < Board.SIZE
