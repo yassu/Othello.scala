@@ -1,4 +1,4 @@
-package othello.elements
+package othello
 
 import org.scalatest.FunSpec
 

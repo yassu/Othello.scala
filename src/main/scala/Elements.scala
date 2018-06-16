@@ -1,4 +1,4 @@
-package othello.elements
+package othello
 
 sealed trait Color
 
