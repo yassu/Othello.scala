@@ -32,6 +32,7 @@ object Cell {
 
 case class Board (cells: List[List[Cell]]) {
   def apply(x: Int, y: Int): Cell = cells(y)(x)
+  def apply(y: Int): List[Cell] = (for (x <- (0 until Board.SIZE)) yield cells(y)(x)).toList
   def changeCell(cell: Cell, pos: (Int, Int)): Board = Board (
     (
       for (y <- (0 until Board.SIZE)) yield (
