@@ -43,6 +43,13 @@ case class Board (cells: List[List[Cell]]) {
     ).toList
   )
 
+  def puttable(pos: (Int, Int), cell: Cell): Boolean =
+    this.changedCellPositionsByVertical1(pos, cell).nonEmpty ||
+    this.changedCellPositionsByVertical2(pos, cell).nonEmpty ||
+    this.changedCellPositionsByHeight1(pos, cell).nonEmpty ||
+    this.changedCellPositionsByHeight2(pos, cell).nonEmpty
+
+
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
       takeWhile(this(pos._1, _).otherCell == cell)
