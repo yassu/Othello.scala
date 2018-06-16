@@ -166,6 +166,21 @@ class BoardSpec extends FunSpec {
     }
   }
 
+  describe ("numberOfCells") {
+    it ("numberOfCells1") {
+      val board = Board.initialBoard
+      assert(board.numberOfCells(Cell.BlackCell) == 2)
+      assert(board.numberOfCells(Cell.WhiteCell) == 2)
+    }
+
+    it ("numberOfCells2") {
+      val board = Board.initialBoard.
+        changeCell(Cell.BlackCell, (3, 3))
+      assert(board.numberOfCells(Cell.BlackCell) == 3)
+      assert(board.numberOfCells(Cell.WhiteCell) == 1)
+    }
+  }
+
   describe ("changedCellPositionsByVertical1") {
     it ("initBoard") {
       val board = Board.initialBoard

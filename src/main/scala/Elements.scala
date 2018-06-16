@@ -55,6 +55,11 @@ case class Board (cells: List[List[Cell]]) {
     this.changedCellPositionsByHeight1(pos, cell) ++
     this.changedCellPositionsByHeight2(pos, cell)
 
+  def numberOfCells(cell: Cell): Int =
+    (
+      for (x <- (0 until Board.SIZE); y <- (0 until Board.SIZE)) yield (x, y)
+    ).filter(t => this(t._1, t._2) == cell).size
+
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
       takeWhile(this(pos._1, _).otherCell == cell)
