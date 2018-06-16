@@ -8,20 +8,18 @@ object Main {
     var blackUser = User(Cell.BlackCell)
     var whiteUser = User(Cell.WhiteCell)
 
-    println("Black Turn")
-    println(board.toPrettyString)
-    println("Please input number >> ")
-    val blackPos = blackUser.getPosition(board)
-    board = blackUser.put(board, blackPos)
+    while (true) {
+      println("Black Turn")
+      println(board.toPrettyString)
+      println("Please input number >> ")
+      val blackPos = blackUser.getPosition(board)
+      board = blackUser.put(board, blackPos)
 
-    println(board.toPrettyString)
-
-    println("White Turn")
-    println(board.toPrettyString)
-    println("Please input number >> ")
-    val whitePos = whiteUser.getPosition(board)
-    board = whiteUser.put(board, whitePos)
-
-    println(board.toPrettyString)
+      println("White Turn")
+      println(board.toPrettyString)
+      println("Please input number >> ")
+      val whitePos = whiteUser.getPosition(board)
+      board = whiteUser.put(board, whitePos)
+    }
   }
 }
