@@ -18,4 +18,6 @@ case class User(board: Board, cell: Cell) {
       cell
     )
   }
+
+  def puttable(pos: (Int, Int)): Boolean = board.puttable(pos, cell)
 }

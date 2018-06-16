@@ -16,4 +16,10 @@ class UserSpec extends FunSpec {
     println(user.put(2, 3).board(3))
     assert(user.put((2, 3)) == resUser)
   }
+
+  it ("puttable") {
+    val user = User(Board.initialBoard, Cell.BlackCell)
+    assert(user.puttable(3, 2))
+    assert(! user.puttable(4, 2))
+  }
 }
