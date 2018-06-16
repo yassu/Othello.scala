@@ -3,7 +3,6 @@ package othello
 case class User(board: Board, cell: Cell) {
   def put(pos: (Int, Int)): User = {
     val changedPositions = board.changedCellPositions(pos, cell) + pos
-    println(changedPositions)
     User (
       Board(
         (
