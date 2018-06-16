@@ -95,6 +95,7 @@ class BoardSpec extends FunSpec {
   }
 
   describe ("ensurePosition") {
+    it ("(n, m) direction1") {
       assert(Board.ensurePosition(3, 3))
     }
 
@@ -179,7 +180,7 @@ class BoardSpec extends FunSpec {
         changeCell(Cell.BlackCell, (0, 0)).
         changeCell(Cell.WhiteCell, (0, 1)).
         changeCell(Cell.WhiteCell, (0, 2))
-      assert(board.changedCellPositionsByVertical2((0, 3), Cell.BlackCell) == Set((0, 2), (0, 1)))
+        assert(board.changedCellPositionsByVertical2((0, 3), Cell.BlackCell) == Set((0, 2), (0, 1)))
     }
   }
 
