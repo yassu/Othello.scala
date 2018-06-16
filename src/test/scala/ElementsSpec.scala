@@ -144,6 +144,28 @@ class BoardSpec extends FunSpec {
     }
   }
 
+  describe ("changedCellPositions") {
+    it ("initialBoard") {
+      val board = Board.initialBoard
+      assert(board.changedCellPositions((3, 2), Cell.BlackCell) == Set((3, 3)))
+      assert(board.changedCellPositions((3, 2), Cell.WhiteCell) == Set())
+      assert(board.changedCellPositions((4, 2), Cell.BlackCell) == Set())
+      assert(board.changedCellPositions((4, 2), Cell.WhiteCell) == Set((4, 3)))
+      assert(board.changedCellPositions((5, 3), Cell.BlackCell) == Set())
+      assert(board.changedCellPositions((5, 3), Cell.WhiteCell) == Set((4, 3)))
+      assert(board.changedCellPositions((5, 4), Cell.BlackCell) == Set((4, 4)))
+      assert(board.changedCellPositions((5, 4), Cell.WhiteCell) == Set())
+      assert(board.changedCellPositions((4, 5), Cell.BlackCell) == Set((4, 4)))
+      assert(board.changedCellPositions((4, 5), Cell.WhiteCell) == Set())
+      assert(board.changedCellPositions((3, 5), Cell.BlackCell) == Set())
+      assert(board.changedCellPositions((3, 5), Cell.WhiteCell) == Set((3, 4)))
+      assert(board.changedCellPositions((2, 4), Cell.BlackCell) == Set())
+      assert(board.changedCellPositions((2, 4), Cell.WhiteCell) == Set((3, 4)))
+      assert(board.changedCellPositions((2, 3), Cell.WhiteCell) == Set())
+      assert(board.changedCellPositions((2, 3), Cell.BlackCell) == Set((3, 3)))
+    }
+  }
+
   describe ("changedCellPositionsByVertical1") {
     it ("initBoard") {
       val board = Board.initialBoard

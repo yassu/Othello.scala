@@ -49,6 +49,11 @@ case class Board (cells: List[List[Cell]]) {
     this.changedCellPositionsByHeight1(pos, cell).nonEmpty ||
     this.changedCellPositionsByHeight2(pos, cell).nonEmpty
 
+  def changedCellPositions(pos: (Int, Int), cell: Cell): Set[(Int, Int)] =
+    this.changedCellPositionsByVertical1(pos, cell) ++
+    this.changedCellPositionsByVertical2(pos, cell) ++
+    this.changedCellPositionsByHeight1(pos, cell) ++
+    this.changedCellPositionsByHeight2(pos, cell)
 
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
