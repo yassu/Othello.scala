@@ -181,6 +181,21 @@ class BoardSpec extends FunSpec {
     }
   }
 
+  it ("toPrettyString") {
+    val board = Board.initialBoard.changeCell(Cell.BlackCell, (3, 3))
+    val resString =
+      "........\n" +
+      "........\n" +
+      "........\n" +
+      "...BB...\n" +
+      "...BW...\n" +
+      "........\n" +
+      "........\n" +
+      "........"
+    println(board.toPrettyString)
+    assert(board.toPrettyString == resString)
+  }
+
   describe ("changedCellPositionsByVertical1") {
     it ("initBoard") {
       val board = Board.initialBoard

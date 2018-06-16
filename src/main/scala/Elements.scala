@@ -61,6 +61,12 @@ case class Board (cells: List[List[Cell]]) {
       for (x <- (0 until Board.SIZE); y <- (0 until Board.SIZE)) yield (x, y)
     ).filter(t => this(t._1, t._2) == cell).size
 
+  def toPrettyString: String = (
+    for (x <- (0 until Board.SIZE)) yield (
+      for (y <- (0 until Board.SIZE)) yield this(x, y).colorChar
+    ).foldLeft(""){ (a, b) => a + b }
+  ).mkString("\n")
+
   private[othello] def changedCellPositionsByVertical1(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
     val rowCols = (pos._2 + 1 until Board.SIZE).
       takeWhile(this(pos._1, _).otherCell == cell)
