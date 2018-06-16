@@ -4,21 +4,20 @@ import org.scalatest.FunSpec
 
 class UserSpec extends FunSpec {
   it ("User instance is initialized") {
-    User(Board.initialBoard, Cell.BlackCell)
+    User(Cell.BlackCell)
   }
 
   it ("put") {
-    val user = User(Board.initialBoard, Cell.BlackCell)
+    val user = User(Cell.BlackCell)
     val resBoard = Board.initialBoard.
       changeCell(Cell.BlackCell, (2, 3)).
       changeCell(Cell.BlackCell, (3, 3))
-    val resUser = User(resBoard, Cell.BlackCell)
-    assert(user.put((2, 3)) == resUser)
+    assert(user.put(Board.initialBoard, (2, 3)) == resBoard)
   }
 
   it ("puttable") {
-    val user = User(Board.initialBoard, Cell.BlackCell)
-    assert(user.puttable(3, 2))
-    assert(! user.puttable(4, 2))
+    val user = User(Cell.BlackCell)
+    assert(user.puttable(Board.initialBoard, (3, 2)))
+    assert(! user.puttable(Board.initialBoard, (4, 2)))
   }
 }
