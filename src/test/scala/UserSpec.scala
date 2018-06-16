@@ -13,7 +13,6 @@ class UserSpec extends FunSpec {
       changeCell(Cell.BlackCell, (2, 3)).
       changeCell(Cell.BlackCell, (3, 3))
     val resUser = User(resBoard, Cell.BlackCell)
-    println(user.put(2, 3).board(3))
     assert(user.put((2, 3)) == resUser)
   }
 
