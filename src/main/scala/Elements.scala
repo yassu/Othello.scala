@@ -73,6 +73,16 @@ case class Board (cells: List[List[Cell]]) {
     else Set()
   }
 
+  private[othello] def changedCellPositionsByHeight2(pos: (Int, Int), cell: Cell): Set[(Int, Int)] = {
+    val rowCols = (0 until pos._1).reverse.
+      takeWhile(this(_, pos._2).otherCell == cell)
+    if (rowCols.isEmpty) Set()
+    else if (this(pos._1, pos._2).isDefined) Set()
+    else if (! Board.ensurePosition(rowCols.last - 1, pos._2)) Set()
+    else if (this(rowCols.last - 1, pos._2) == cell) rowCols.map(h => (h, pos._2)).toSet
+    else Set()
+  }
+
 }
 
 object Board {
